@@ -1,0 +1,23 @@
+---
+import Defer from "../components/Defer.astro";
+
+// disable prerendering this page for it to be actually accepted by cloudflare.
+// if there are no ssr'd routes, the generated routes.json is completely empty and is not accepted by cloudflare.
+export const prerender = false;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+		<Defer server:defer>
+			<p slot="fallback">component did not load or js is disabled</p>
+		</Defer>
+	</body>
+</html>
